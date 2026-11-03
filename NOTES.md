@@ -14,3 +14,24 @@ A PreToolUse hook on Bash, at project scope in .claude/settings.json, runs .clau
 
 ## Headless run
 I ran: claude -p "Summarize what this project does in 3 bullets" --allowedTools "Read,Glob,Grep" --max-turns 5. It could only read and search files, with no write, delete or shell access, and at most 5 turns, so it was safe to run with nobody watching. It printed three bullets and exited.
+
+
+## Evidence of running a task headless with --allowedTools as required by the task
+
+PS C:\Users\marti\GitHub\claude-wire-into-your-stack> claude -p "Summarize what this project does in 3 bullets" --allowedTools "Read,Glob,Grep" --max-turns 5
+- **A small Express API** that serves as the working project for the Claude Code course. `server.js` mounts two routers: `/users` and `/health`.
+- **Simple structure:** each resource has its own file in `routes/`. All data goes through the in-memory helper `db/store.js`, so routes hold no state. Input errors return `400`, missing records return `404`, and errors are JSON shaped like `{ "error": "message" }`.
+- **Set up for Claude Code workflows:** it has tests (Node's built-in runner), ESLint, and a CI workflow. It also has Claude config: an MCP server (`.mcp.json`), an `add-route` skill, a `/review` command, and settings with hooks.
+
+I read `server.js` and `CLAUDE.md` and listed the other files. I didn't open the other files, so the details on routes and tooling come from `CLAUDE.md`, the file names, and your recent commit message.
+PS C:\Users\marti\GitHub\claude-wire-into-your-stack> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .claude/commands/
+        NOTES.md
+
+nothing added to commit but untracked files present (use "git add" to track)
